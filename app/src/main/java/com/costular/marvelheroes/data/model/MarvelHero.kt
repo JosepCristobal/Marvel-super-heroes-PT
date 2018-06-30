@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
  * Created by costular on 16/03/2018.
  */
 data class MarvelHero(
-        val id: Long = 0L,
+        val id: Int = 0,
         val name: String = "",
         @SerializedName("photo")
         val photoUrl: String = "",
