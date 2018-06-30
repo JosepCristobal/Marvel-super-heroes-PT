@@ -10,6 +10,7 @@ class MarvelHeroMapper : Mapper<MarvelHero, MarvelHeroEntity> {
 
     override fun transform(input: MarvelHero): MarvelHeroEntity =
             MarvelHeroEntity(
+                    input.id,
                     input.name,
                     input.photoUrl,
                     input.realName,

@@ -1,6 +1,7 @@
 package com.costular.marvelheroes.domain.model
 
 import android.annotation.SuppressLint
+import android.arch.persistence.room.PrimaryKey
 import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
@@ -11,6 +12,8 @@ import kotlinx.android.parcel.Parcelize
 @SuppressLint("ParcelCreator")
 @Parcelize
 data class MarvelHeroEntity(
+        @PrimaryKey(autoGenerate = true)
+        val id: Long,
         val name: String,
         val photoUrl: String,
         val realName: String,
