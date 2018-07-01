@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.Toast
 import com.costular.marvelheroes.R
 import com.costular.marvelheroes.R.id.heroesListLoading
+//import com.costular.marvelheroes.di.components.DaggerGetMarvelHeroesListComponent
 import com.costular.marvelheroes.di.modules.GetMarvelHeroesListModule
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 import com.costular.marvelheroes.presentation.MainApp
@@ -29,35 +30,24 @@ class HeroesListActivity : AppCompatActivity() {
     lateinit var heroesListViewModel: HeroesListViewModel
 
     private val adapter = HeroesListAdapter { hero, image -> goToHeroDetail(hero, image) }
-    //private val adapter = HeroesListAdapter{ goToHeroDetail(it,image: View)}
 
-    //@Inject
-    //lateinit var presenter: HeroesListPresenter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        inject()
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //setUp()
         setUpRecycler()
         setUpViewModel()
+        inject()
     }
 
 
     fun inject() {
         (application as MainApp).component.inject(this)
-        /*DaggerGetMarvelHeroesListComponent.builder()
-                .applicationComponent((application as MainApp).component)
-                .getMarvelHeroesListModule(GetMarvelHeroesListModule(this))
-                .build()
-                .inject(this)*/
+
     }
 
-    //private fun setUp() {
-       // setUpRecycler()
-       // presenter.loadMarvelHeroes()
-    //}
 
     private fun setUpRecycler() {
         //adapter = HeroesListAdapter { hero, image -> goToHeroDetail(hero, image) }

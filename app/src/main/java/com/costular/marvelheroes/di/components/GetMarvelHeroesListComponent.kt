@@ -12,6 +12,6 @@ import dagger.Component
 @Component(modules = [GetMarvelHeroesListModule::class], dependencies = [ApplicationComponent::class])
 interface GetMarvelHeroesListComponent {
 
-    fun inject(marvelListActivity: HeroesListActivity)
+
 
 }
