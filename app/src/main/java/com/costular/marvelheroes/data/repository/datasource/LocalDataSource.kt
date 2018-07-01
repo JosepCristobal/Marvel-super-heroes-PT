@@ -8,6 +8,7 @@ import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.Observable
+import io.reactivex.schedulers.Schedulers
 
 
 class LocalDataSource (val marvelHeroDatabase: MarvelHeroDatabase,
@@ -19,8 +20,11 @@ class LocalDataSource (val marvelHeroDatabase: MarvelHeroDatabase,
                             .getAllUsers()
                             .toObservable()
 
-
-//
-
-   // fun saveMarvelHeros(){}
+   fun saveHeroes(users: List<MarvelHeroEntity>) {
+      Observable.fromCallable {
+         marvelHeroDatabase.getMarvelHeroDao().removeAndInsertUsers(users)
+      }
+              .subscribeOn(Schedulers.io())
+              .subscribe()
+   }
 }
