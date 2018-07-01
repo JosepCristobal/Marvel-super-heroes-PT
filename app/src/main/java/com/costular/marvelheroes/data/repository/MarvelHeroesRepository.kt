@@ -10,4 +10,7 @@ interface MarvelHeroesRepository {
 
     fun getMarvelHeroesList(): Observable<List<MarvelHeroEntity>>
 
+    fun deleteMarvelHeroesList()
+
+
 }

@@ -27,4 +27,12 @@ class LocalDataSource (val marvelHeroDatabase: MarvelHeroDatabase
               .subscribeOn(Schedulers.io())
               .subscribe()
    }
+
+    override fun deleteMarvelHeroesList() {
+        marvelHeroDatabase
+                .getMarvelHeroDao()
+                .deleteAllUsers()
+    }
+
+
 }

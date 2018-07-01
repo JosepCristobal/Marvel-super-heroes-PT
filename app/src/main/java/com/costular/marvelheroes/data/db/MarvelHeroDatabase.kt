@@ -8,4 +8,5 @@ import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 abstract class MarvelHeroDatabase: RoomDatabase() {
 
     abstract fun getMarvelHeroDao(): MarvelHeroDao
+
 }
