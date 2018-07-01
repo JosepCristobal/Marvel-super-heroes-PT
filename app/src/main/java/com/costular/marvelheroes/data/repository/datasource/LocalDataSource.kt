@@ -11,8 +11,8 @@ import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 
 
-class LocalDataSource (val marvelHeroDatabase: MarvelHeroDatabase,
-                         val marvelHeroesMapper: MarvelHeroMapper): MarvelHeroesRepository {
+class LocalDataSource (val marvelHeroDatabase: MarvelHeroDatabase
+                         ): MarvelHeroesRepository {
 
    override fun getMarvelHeroesList(): Observable<List<MarvelHeroEntity>> =
                     marvelHeroDatabase
