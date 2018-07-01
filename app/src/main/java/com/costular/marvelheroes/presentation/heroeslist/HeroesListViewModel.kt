@@ -15,7 +15,7 @@ import javax.inject.Inject
 class HeroesListViewModel @Inject constructor(val marvelHeroesRepositoryImpl: MarvelHeroesRepositoryImpl,
                                               val settingsManager: SettingsManager): BaseViewModel() {
 
-    val userListState: MutableLiveData<List<MarvelHeroEntity>> = MutableLiveData()
+    val marvelHeroListState: MutableLiveData<List<MarvelHeroEntity>> = MutableLiveData()
     val isLoadingState: MutableLiveData<Boolean> = MutableLiveData()
 
     fun loadMarvelHeroesList() {
@@ -26,7 +26,7 @@ class HeroesListViewModel @Inject constructor(val marvelHeroesRepositoryImpl: Ma
                 .doOnTerminate { isLoadingState.postValue(false) }
                 .subscribeBy(
                         onNext = {
-                            userListState.value = it
+                            marvelHeroListState.value = it
                         },
                         onError = {
                             Log.d("HeroesListViewModel", it.toString())

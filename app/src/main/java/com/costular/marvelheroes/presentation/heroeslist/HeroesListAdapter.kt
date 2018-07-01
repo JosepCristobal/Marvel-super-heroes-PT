@@ -27,6 +27,8 @@ typealias Click = (MarvelHeroEntity, ImageView) -> Unit
 
 class HeroesListAdapter(val clickListener: Click):  RecyclerView.Adapter<HeroesListAdapter.HeroesViewHolder>() {
 
+    private val items: MutableList<MarvelHeroEntity> = mutableListOf()
+
     private lateinit var context: Context
 
     private var data: MutableList<MarvelHeroEntity> = mutableListOf()
@@ -40,6 +42,11 @@ class HeroesListAdapter(val clickListener: Click):  RecyclerView.Adapter<HeroesL
     }
 
     override fun getItemCount() = data.size
+
+    fun submitList(items: List<MarvelHeroEntity>) {
+        this.items.addAll(items)
+        notifyDataSetChanged()
+    }
 
     override fun onBindViewHolder(holder: HeroesViewHolder, position: Int) = holder.bind(data[position])
 

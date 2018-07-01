@@ -3,7 +3,9 @@ package com.costular.marvelheroes.presentation
 import android.app.Application
 import com.costular.marvelheroes.di.components.ApplicationComponent
 import com.costular.marvelheroes.di.components.DaggerApplicationComponent
+
 import com.costular.marvelheroes.di.modules.ApplicationModule
+import com.costular.marvelheroes.presentation.heroeslist.HeroesListActivity
 import com.facebook.stetho.Stetho
 import javax.inject.Inject
 
@@ -12,14 +14,13 @@ import javax.inject.Inject
  */
 class MainApp : Application() {
 
+    lateinit var component: ApplicationComponent
+
     override fun onCreate() {
         super.onCreate()
        Stetho.initializeWithDefaults(this)
 
-    }
-
-
-    val component: ApplicationComponent by lazy {
+        component =
         DaggerApplicationComponent.builder()
                 .applicationModule(ApplicationModule(this))
                 .build()
